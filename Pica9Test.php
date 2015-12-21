@@ -23,25 +23,25 @@ public function LoopMethod($string,$stringlength){
 }
 
 
-public function RecursiveMethod($string,$StringIndex,$s){
+public function RecursiveMethod($string,$StringIndex){
   static $ReverseString="";	
   
   if($StringIndex>=0){
   	$ReverseString.=$string[$StringIndex];
   	$StringIndex=$StringIndex-1;
-  	$s->RecursiveMethod($string,$StringIndex,$s);
+  	$this->RecursiveMethod($string,$StringIndex);
   }
   return $ReverseString;
 }
 
 
-public function multiplication($Value1,$Value2,$obj2)
+public function multiplication($Value1,$Value2)
 
 {
   static $result=0;
   while($Value2!=0){
   
-  	return $Value1+$obj2->multiplication($Value1,$Value2-1,$obj2); 
+  	return $Value1+$this->multiplication($Value1,$Value2-1); 
   
   }
   //return $result;
@@ -52,7 +52,7 @@ public function multiplication($Value1,$Value2,$obj2)
 
 
 
-public function display($strings, $choice, $obj)
+public function display($strings, $choice)
 
 {
   
@@ -63,7 +63,7 @@ public function display($strings, $choice, $obj)
   
       echo "<br>REVERSE STRING WITH LOOP: <br>";
 
-      echo $obj->LoopMethod($strings,$StringIndex);
+      echo $this->LoopMethod($strings,$StringIndex);
   
   }
   
@@ -71,7 +71,7 @@ public function display($strings, $choice, $obj)
   
       echo "<br>REVERSE STRING WITH RECURSION: <br>";
 
-      echo $obj->RecursiveMethod($strings,$StringIndex-1,$obj);
+      echo $this->RecursiveMethod($strings,$StringIndex-1,$this);
   
   }
   
@@ -79,7 +79,7 @@ public function display($strings, $choice, $obj)
   
       echo "<br>STRING LENGTH IS: <br>";
 
-      echo $StringIndex=$obj->StringLength($strings);
+      echo $StringIndex=$this->StringLength($strings);
   
   }
 
